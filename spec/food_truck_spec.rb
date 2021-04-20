@@ -18,4 +18,12 @@ describe FoodTruck do
       expect(food_truck.inventory).to eq []
     end
   end
+
+  describe '#check_stock' do
+    it 'checks the inventory for an item returns how many' do
+      food_truck = FoodTruck.new('Food Truck')
+      item1 = instance_double('Item')
+      expect(food_truck.inventory(item1)). to eq 0
+    end
+  end
 end
