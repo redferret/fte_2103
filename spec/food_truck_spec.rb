@@ -25,6 +25,16 @@ describe FoodTruck do
       item1 = instance_double('Item')
       expect(food_truck.check_stock(item1)). to eq 0
     end
+    it 'has stock' do
+      food_truck = FoodTruck.new('Food Truck')
+      item1 = instance_double('Item')
+      item2 = instance_double('Item')
+
+      food_truck.stock(item1, 20)
+      food_truck.stock(item2, 5)
+
+      expect(food_truck.check_stock(item1)). to eq 20
+    end
   end
 
   describe '#stock' do
