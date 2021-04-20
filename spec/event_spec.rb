@@ -49,4 +49,43 @@ describe Event do
       expect(event.food_truck_names).to eq expected
     end
   end
+
+  describe '#food_trucks_that_sell' do
+    it 'lists out all items of truck given the item' do
+      event = Event.new('Name of event')
+
+      item1 = instance_double('Item')
+      item2 = instance_double('Item')
+      item3 = instance_double('Item')
+      item4 = instance_double('Item')
+
+      inv1 = {
+        item1 => 10,
+        item2 => 5,
+        item3 => 7
+      }
+
+      inv2 = {
+        item3 => 12,
+        item4 => 6
+      }
+
+      inv3 = {
+        item4 => 10
+      }
+
+      truck1 = instance_double('Truck', inventory: inv1)
+      truck2 = instance_double('Truck', inventory: inv2)
+      truck3 = instance_double('Truck', inventory: inv3)
+
+      event.add_food_truck(truck1)
+      event.add_food_truck(truck2)
+      event.add_food_truck(truck3)
+
+      expected = [truck1, truck2]
+      actual = event.food_trucks_that_sell(item3)
+
+      expect(actual).to eq expected
+    end
+  end
 end
