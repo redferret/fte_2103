@@ -18,4 +18,19 @@ describe Event do
       expect(event.food_trucks).to eq []
     end
   end
+
+  describe '#add_food_truck' do
+    it 'adds a food truck' do
+      event = Event.new('Name of event')
+
+      truck1 = instance_double('Truck')
+      truck2 = instance_double('Truck')
+
+      event.add_food_truck(truck1)
+      event.add_food_truck(truck2)
+      execpted = [truck1, truck2]
+      
+      expect(event.food_trucks).to eq expected
+    end
+  end
 end
