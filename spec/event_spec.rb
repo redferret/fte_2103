@@ -28,8 +28,8 @@ describe Event do
 
       event.add_food_truck(truck1)
       event.add_food_truck(truck2)
-      execpted = [truck1, truck2]
-      
+      expected = [truck1, truck2]
+
       expect(event.food_trucks).to eq expected
     end
   end
