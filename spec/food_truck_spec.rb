@@ -26,4 +26,19 @@ describe FoodTruck do
       expect(food_truck.check_stock(item1)). to eq 0
     end
   end
+
+  describe '#stock' do
+    it 'add an item with a quanity' do
+      food_truck = FoodTruck.new('Food Truck')
+      item1 = instance_double('Item')
+
+      expected = {
+        item1: 30
+      }
+
+      food_truck.stock(item1, 30)
+
+      expect(food_truck.inventory). to eq expected
+    end
+  end
 end
