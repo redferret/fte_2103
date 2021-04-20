@@ -4,7 +4,7 @@ class FoodTruck
 
   def initialize(name)
     @name = name
-    @inventory = []
+    @inventory = {}
   end
 
   def check_stock(item)
@@ -12,6 +12,7 @@ class FoodTruck
   end
 
   def stock(item, count)
+    @inventory[item] = count
   end
 
 end

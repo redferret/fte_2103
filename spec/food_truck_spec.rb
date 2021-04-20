@@ -15,7 +15,7 @@ describe FoodTruck do
 
     it 'has an empty inventory' do
       food_truck = FoodTruck.new('Food Truck')
-      expect(food_truck.inventory).to eq []
+      expect(food_truck.inventory).to eq({})
     end
   end
 
@@ -33,7 +33,7 @@ describe FoodTruck do
       item1 = instance_double('Item')
 
       expected = {
-        item1: 30
+        item1 => 30
       }
 
       food_truck.stock(item1, 30)
