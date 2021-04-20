@@ -50,6 +50,36 @@ describe Event do
     end
   end
 
+  describe '#potential_revenue' do
+    it 'returns the items price * quantity for all trucks' do
+      event = Event.new('Name of event')
+
+      item1 = instance_double('Item', price:12)
+      item2 = instance_double('Item', price:10)
+      item3 = instance_double('Item', price:5)
+      item4 = instance_double('Item', price:2)
+
+      inv1 = {
+        item1 => 3,
+        item2 => 4,
+        item3 => 2
+      }
+
+      inv2 = {
+        item3 => 4,
+        item4 => 5
+      }
+
+      truck1 = instance_double('Truck', inventory: inv1)
+      truck2 = instance_double('Truck', inventory: inv2)
+
+      event.add_food_truck(truck1)
+      event.add_food_truck(truck2)
+
+      expect(event.potential_revenue).to eq 116.0
+    end
+  end
+
   describe '#food_trucks_that_sell' do
     it 'lists out all items of truck given the item' do
       event = Event.new('Name of event')
