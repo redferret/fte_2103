@@ -23,7 +23,7 @@ describe FoodTruck do
     it 'checks the inventory for an item returns how many' do
       food_truck = FoodTruck.new('Food Truck')
       item1 = instance_double('Item')
-      expect(food_truck.inventory(item1)). to eq 0
+      expect(food_truck.check_stock(item1)). to eq 0
     end
   end
 end
