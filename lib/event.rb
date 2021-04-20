@@ -19,4 +19,14 @@ class Event
       truck.inventory.include?(item)
     end
   end
+
+  def potential_revenue
+    @food_trucks.sum do |truck|
+      sum = 0
+      truck.inventory.each do |item, count|
+        sum += item.price * count
+      end
+      sum
+    end
+  end
 end
